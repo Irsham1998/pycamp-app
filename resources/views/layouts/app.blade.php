@@ -16,13 +16,14 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
 
     <title>Pycamp</title>
-    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+    {{-- <link rel="stylesheet" href="{{ asset('css/app.css') }}"> --}}
 </head>
 
 <body>
 
     {{-- navbar --}}
     @include('components.navbar')
+    {{-- @include('layouts.navigation') --}}
     {{-- navbar --}}
 
     @yield('content')
