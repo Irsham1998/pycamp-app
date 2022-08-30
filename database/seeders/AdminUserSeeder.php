@@ -19,9 +19,9 @@ class AdminUserSeeder extends Seeder
         // beda lagi caranya astaga
         User::create([
             'name' => 'admin',
-            'email' => 'sham@laracamp.com',
+            'email' => 'admin@pycamp.me',
             'email_verified_at' => date('Y-m-d H:i:s', time()),
-            'password' => \bcrypt('shamlaracamp'),
+            'password' => \bcrypt('adminpycamp'),
             'is_admin' => true,
         ]);
     }
