@@ -43,8 +43,21 @@ class Checkout extends Model
     //     return $this->belongsTo(Camps::class);
     // }
 
+    // relasi checkout dan camp
     public function camps()
     {
         return $this->belongsTo(Camps::class, 'camp_id', 'id') ;
+    }
+
+
+    /**
+     * Get the user that owns the Checkout
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    // relasi checkout dan user
+    public function User(): BelongsTo
+    {
+        return $this->belongsTo(User::class, 'user_id', 'id');
     }
 }
