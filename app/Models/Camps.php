@@ -17,4 +17,14 @@ class Camps extends Model
         'title',
         'price'
     ];
+
+    public function getIsRegisteredAttribute()
+    {
+        if (!Auth::check())
+        {
+            return false;
+        }
+
+        return Checkout::whereCampId($this->id)->whereUserId(Auth::id())->exists();
+    }
 }
