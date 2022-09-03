@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\Checkout;
 use Auth;
 
 use Illuminate\Http\Request;
@@ -10,12 +9,15 @@ class HomeController extends Controller
 {
     public function dashboard()
     {
-        // ambil data di checkout
-        // $checkouts = Checkout::with('Camps')->whereUserId(Auth::id())->get();
-        $checkouts = Checkout::with('Camps')->where('user_id', Auth::id())->get();
+        // agar bisa pilih routenya, cek web route
+        switch (Auth::user()->is_admin) {
+            case true:
+                return redirect(route('admin.dashboard'));
+                break;
 
-        return view('user.dashboard', [
-            'checkouts' => $checkouts
-        ]);
+            default:
+                return redirect(route('user.dashboard'));
+                break;
+        }
     }
 }

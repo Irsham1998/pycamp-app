@@ -5,8 +5,8 @@
     <br>
     Terima kasih sudah daftar di <strong>{{ $checkout->camps->title }}</strong>, cek lagi instruksi pembayarannya
 
-    @component('mail::button', ['url' => route('user.checkout.invoice', $checkout->id)])
-        Get Invoice
+    @component('mail::button', ['url' => route('dashboard')])
+        My Dashboard
     @endcomponent
 
     Thanks,<br>
