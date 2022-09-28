@@ -15,13 +15,12 @@ class Checkout extends Model
     [
         'user_id',
         'camp_id',
-        'card_number',
-        'expired',
-        'cvc',
-        'is_paid'
+        'payment_status',
+        'midtrans_url',
+        'midtrans_booking_code'
     ];
 
-    // agar bisa simpan bulan n tahun ae
+    // agar bisa simpan bulan n tahun ae dan buat blajar ae, krn nda d pakai di midtrans
     public function setExpiredAttribute($value)
     {
         $this->attributes['expired'] = date('Y-m-t', strtotime($value));
