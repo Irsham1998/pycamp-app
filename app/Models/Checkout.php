@@ -15,13 +15,15 @@ class Checkout extends Model
     [
         'user_id',
         'camp_id',
-        'card_number',
-        'expired',
-        'cvc',
-        'is_paid'
+        'payment_status',
+        'midtrans_url',
+        'midtrans_booking_code',
+        'discount_id',
+        'discount_percentage',
+        'total'
     ];
 
-    // agar bisa simpan bulan n tahun ae
+    // agar bisa simpan bulan n tahun ae dan buat blajar ae, krn nda d pakai di midtrans
     public function setExpiredAttribute($value)
     {
         $this->attributes['expired'] = date('Y-m-t', strtotime($value));
@@ -59,5 +61,15 @@ class Checkout extends Model
     public function User(): BelongsTo
     {
         return $this->belongsTo(User::class, 'user_id', 'id');
+    }
+
+    /**
+     * Get the Discount that owns the Checkout
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function Discount(): BelongsTo
+    {
+        return $this->belongsTo(Discount::class);
     }
 }

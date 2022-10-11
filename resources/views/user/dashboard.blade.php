@@ -32,13 +32,19 @@
                                     </p>
                                 </td>
                                 <td>
-                                    <strong>${{ $checkout->camps->price }}k</strong>
+                                    <strong>
+                                        ${{ $checkout->total }}k
+                                        @if ($checkout->discount_id)
+                                            <span class="badge bg-success">Disc {{ $checkout->discount_percentage }}%</span>
+                                        @endif
+                                    </strong>
                                 </td>
                                 <td>
-                                    @if ($checkout->is_paid)
-                                        <strong class="text-success">Payment Success</strong>
-                                    @else
-                                        <strong class="text-danger">Waiting for Payment</strong>
+                                    <strong>{{ $checkout->payment_status }}</strong>
+                                </td>
+                                <td>
+                                    @if ($checkout->payment_status == 'waiting')
+                                        <a href="{{ $checkout->midtrans_url }}" class="btn btn-primary">Pay Here</a>
                                     @endif
                                 </td>
                                 <td>
@@ -51,7 +57,7 @@
                         @empty
                             <tr>
                                 <td colspan="5">
-                                    <h3>No Have Data</h3>
+                                    <h3>No Camp Registered</h3>
                                 </td>
                             </tr>
                         @endforelse
